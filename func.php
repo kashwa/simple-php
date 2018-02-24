@@ -5,25 +5,30 @@
 *   and migrating some html & css into it.
 */
 
+//  first function is to check whether user can get ticket,
+//  or he doesn't.
 function getTicket($user, $age){
   $ticket = rand(5000, 10000);
 
+  //  if the user is allowed.
   if ($age >= 30) {
 
-    $msg = "Hello, " . $user . " Congratz!" . "<br>";
+    $msg = "Hello, " . $user . " Congratz! :)" . "<br>";
     $msg .= "and your Ticket Id is [ <span>" . $ticket . "</span> ]";
 
+  //  else if user is not allowed.
   } else {
 
-    $msg = "Sorry Dear, You can't Attend :(";
-    $msg = " as Your age is " . $age;
+    $msg = "Sorry! Dear " . $user . ", You can't Attend :(" . "<br>";
+    $msg .= " as Your age is <span class='not-alloed'>" . $age . "</span> Years old.";
 
   }
 
   return $msg;
 }
 
-$id = getTicket("Aabed", 33);
+//  get user's name and age.
+$id = getTicket("Aabed", 12);
 
 function makeFrame($elem){
   $frame = "<div class ='nice-frame'>";
@@ -57,6 +62,10 @@ $myElem = makeFrame($id);
       .nice-frame span{
         font-weight: bold;
         color: #4A772F;
+      }
+
+      span.not-alloed{
+        color: red;
       }
     </style>
   </head>
